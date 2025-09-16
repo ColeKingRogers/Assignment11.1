@@ -1,0 +1,100 @@
+﻿<Window x:Class="Assignment11._1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment11._1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Book Inventroy" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <DataGrid Name="InventoryDG" Grid.Row="1" AutoGenerateColumns="False" Margin="5" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}" Width="*"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding BookName}" Width="*"/>
+                <DataGridTextColumn Header="Author" Binding="{Binding AuthorName}" Width="*"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Summary}" Width="*"/>
+                <DataGridTemplateColumn Header="Update Inventory">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Click="UpdateEdit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete Product">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="DeleteRecord"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="BlueViolet" BorderThickness="3" Margin="5">
+                <StackPanel Margin="5">
+                    <Label Content="Add Product" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid Margin="5" x:Name="AddProductGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="ISBN"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ISBN}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Title"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding BookName}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="Author"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AuthorName}"/>
+                        <Label Grid.Row="3" Grid.Column="0" Content="Description"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Summary}"/>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Add Product" Click="AddRecord"/>
+
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1" BorderBrush="BlueViolet" BorderThickness="3" Margin="5">
+                <StackPanel Margin="5">
+                    <Label Content="Update Product" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Grid Margin="5" x:Name="UpdateProductGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="ISBN"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ISBN}"/>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Title"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding BookName}"/>
+                        <Label Grid.Row="2" Grid.Column="0" Content="Author"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AuthorName}"/>
+                        <Label Grid.Row="3" Grid.Column="0" Content="Description"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Summary}"/>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Update Product" Click="UpdateRecord"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
